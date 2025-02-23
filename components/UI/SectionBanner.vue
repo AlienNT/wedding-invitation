@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Observed from "~/layouts/observed.vue";
-
 const props = defineProps<{
   backgroundImage?: string,
   backgroundAttachment?: 'fixed' | 'scroll' | 'unset',
