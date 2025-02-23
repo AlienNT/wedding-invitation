@@ -1,0 +1,62 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+
+$horizontalSpace: 30px;
+$sectionVerticalPadding: 100px;
+
+* {
+  font-family: fonts.$fontSecondary;
+  color: variables.$colorFontPrimary;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.flex-padding {
+  padding-left: $horizontalSpace;
+  padding-right: $horizontalSpace;
+}
+
+.container {
+  @extend .flex-padding;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container--fluid {
+  max-width: 100%;
+}
+
+.row {
+  margin-right: -$horizontalSpace;
+  margin-left: -$horizontalSpace;
+  display: flex;
+}
+
+.col {
+  @extend .flex-padding;
+  flex: 1;
+}
+
+html,
+body,
+#__nuxt,
+.main {
+  height: 100%;
+  width: 100%;
+}
+.main {
+  overflow-x: hidden;
+}
+
+.section {
+  background: #ffffff;
+  padding-top: $sectionVerticalPadding;
+  padding-bottom: $sectionVerticalPadding;
+  transition: height .2s ease;
+
+  &:nth-of-type(even) {
+    background: #f4f4f4;
+  }
+}
