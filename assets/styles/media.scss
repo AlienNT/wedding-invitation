@@ -1,0 +1,6 @@
+$screenMedium: 768px;
+$screenLarge: 1024px;
+
+$mediaNotMobile: 'all and (pointer: fine)';
+
+$mediaScreenMedium: 'all and (max-width:#{$screenMedium})';
