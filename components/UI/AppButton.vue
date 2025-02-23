@@ -28,7 +28,12 @@ withDefaults(defineProps<{
   background-color: variables.$designElementColor;
   color: variables.$colorFontLight;
   cursor: pointer;
-  transition: background-color 0.25s ease;
+  transition: .2s ease;
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
   &:not([disabled]):hover {
     background-color: color.scale(variables.$designElementColor, $lightness: -20%);
