@@ -1,16 +1,26 @@
 import {h} from "vue";
 import {renderToString} from "@vue/server-renderer";
-import MailMassage from "~/components/mailMessage/MailMassage.vue";
-import type {FeedbackMessageInterface} from "~/store/feedback";
+import MailMessage from "~/components/mailMessage/MailMessage.vue";
+import type {FeedbackMessageInterface, RadioSelectorOptionInterface} from "~/store/feedback";
 
 export function useMailMessage() {
-    async function createMessage({names, isNeedHotel, isCanBePresent}: FeedbackMessageInterface): Promise<string> {
+    async function createMessage(
+        {
+            names,
+            isNeedHotel,
+            isCanBePresent,
+            option
+        }: FeedbackMessageInterface & {
+            option?: RadioSelectorOptionInterface
+        }): Promise<string> {
+
         return await renderToString(h(
-            MailMassage,
+            MailMessage,
             {
                 names,
                 isNeedHotel,
-                isCanBePresent
+                isCanBePresent,
+                option
             }
         ))
     }

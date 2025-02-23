@@ -55,6 +55,9 @@ export function useFeedback() {
     const options = computed(() => {
         return state.radio.options
     })
+    const option = computed(() => {
+        return state.radio.options.find((option) => option._id === selectedOptionId.value)
+    })
     const feedbackFormData = computed(() => {
         return state.feedbackFormData
     })
@@ -73,7 +76,10 @@ export function useFeedback() {
                 await useMail().send({
                     from: feedbackFormData.value.names,
                     subject: title,
-                    html: message ? message : await useMailMessage().createMessage(feedbackFormData.value),
+                    html: message ? message : await useMailMessage().createMessage({
+                        ...feedbackFormData.value,
+                        option: option.value
+                    }),
                 })
                 resolve(true)
 
