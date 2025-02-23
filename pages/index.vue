@@ -15,7 +15,7 @@ useHead({
 useSeoMeta({
   title: `Пришлашение на свадьбу`,
   author: 'Nick Tristen, Никита Тристень',
-  description: 'Єлектронное приглашение на свадьбу Андрея и Алины',
+  description: 'Электронное приглашение на свадьбу Андрея и Алины',
   appleMobileWebAppCapable: 'yes',
   charset: 'utf-8',
   appleMobileWebAppStatusBarStyle: 'black',
