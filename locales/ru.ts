@@ -54,10 +54,7 @@ export const locale: LocaleInterface = {
     },
     countdown: {
         title: 'До свадьбы осталось',
-        date: (date, time) => {
-            console.log({date, time})
-            return new Date(date + ' ' + time)
-        },
+        date: (date, time) => new Date(date + ' ' + time),
     },
     dayProgram: {
         title: 'Программа дня'
