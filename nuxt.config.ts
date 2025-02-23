@@ -9,10 +9,10 @@ export default defineNuxtConfig({
     //@ts-ignore
     mail: {
         message: {
-            to: 'nick.tristen22@gmail.com'
+            to: process.env.MAIL_TO
         },
         smtp: {
-            service: 'gmail',
+            service: process.env.MAIL_SERVICE,
             auth: {
                 user: process.env.MAIL_USER,
                 pass: process.env.MAIL_PASSWORD
