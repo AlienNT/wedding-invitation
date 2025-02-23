@@ -68,21 +68,31 @@ export function useFeedback() {
             message?: HTMLElement
         }) {
 
-        const {createMessage} = useMailMessage()
-        const mail = useMail()
-        const msg = message ? message : await createMessage(feedbackFormData.value)
+        return new Promise(async (resolve, reject) => {
+            try {
+                await useMail().send({
+                    from: feedbackFormData.value.names,
+                    subject: title,
+                    html: message ? message : await useMailMessage().createMessage(feedbackFormData.value),
+                })
+                resolve(true)
 
-        return mail.send({
-            from: feedbackFormData.value.names,
-            subject: title,
-            html: msg,
+            } catch (e) {
+                console.log('error', e)
+                reject(e)
+            }
         })
     }
 
     function setSelectedOption(selectedOptionId: Id) {
-        state.radio.selectedOption = selectedOptionId
-        const selectedOption: RadioSelectorOptionInterface | undefined = state.radio.options.find(({_id}) => selectedOptionId === _id)
+        const selectedOption = state
+            .radio
+            .options
+            .find(({_id}) => selectedOptionId === _id)
+
         if (!selectedOption) return
+
+        state.radio.selectedOption = selectedOptionId
         state.feedbackFormData.isCanBePresent = selectedOption.value
     }
 
