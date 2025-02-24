@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import CountdownItem from "~/components/UI/countdown/CountdownItem.vue";
+import eventConfig from "#shared/utils/eventConfig";
 
-type DayTitle = 'дней' | 'день' | 'дня'
-type HourTitle = 'часов' | 'час' | 'часа'
-type MinuteTitle = 'минут' | 'минута' | 'минуты'
-type SecondTitle = 'секунд' | 'секунда' | 'секунды'
+type DayTitle = 'дней' | 'день' | 'дня' | 'днів'
+type HourTitle = 'часов' | 'час' | 'часа' | 'годин' | 'година' | 'години'
+type MinuteTitle = 'минут' | 'минута' | 'минуты' | 'хвилин' | 'хвилина' | 'хвилини'
+type SecondTitle = 'секунд' | 'секунда' | 'секунды' | 'секунди'
 
 
 interface TimeTitles {
@@ -20,11 +21,19 @@ const props = defineProps<{
 
 const state = reactive({
   titles: {
-    day: ['дней', 'день', 'дня'],
-    hour: ['часов', 'час', 'часа'],
-    minute: ['минут', 'минута', 'минуты'],
-    second: ['секунд', 'секунда', 'секунды'],
-  } as TimeTitles
+    ru: {
+      day: ['дней', 'день', 'дня'],
+      hour: ['часов', 'час', 'часа'],
+      minute: ['минут', 'минута', 'минуты'],
+      second: ['секунд', 'секунда', 'секунды'],
+    } as TimeTitles,
+    ua: {
+      day: ['днів', 'день', 'дня'],
+      hour: ['годин', 'година', 'години'],
+      minute: ['хвилин', 'хвилина', 'хвилини'],
+      second: ['секунд', 'секунда', 'секунди'],
+    } as TimeTitles
+  }
 })
 
 const displayDate = computed(() => {
@@ -32,7 +41,10 @@ const displayDate = computed(() => {
 })
 
 function displayTitle(field: keyof TimeTitles, value: number) {
-  return state.titles[field][getTitleIndex(value)]
+  return state.titles
+      [eventConfig.LOCALE as keyof typeof state.titles]
+      [field]
+      [getTitleIndex(value)]
 }
 
 function getTitleIndex(number: number) {
@@ -86,10 +98,12 @@ function getTitleIndex(number: number) {
   display: flex;
   width: 100%;
   gap: 5px;
+
   > * {
     flex: 0 0 25%;
   }
 }
+
 .countdown-component {
   width: 100%;
 }
