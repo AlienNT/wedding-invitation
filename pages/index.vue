@@ -5,6 +5,7 @@ import SectionLocation from "~/components/sections/SectionLocation.vue";
 import SectionForm from "~/components/sections/SectionForm.vue";
 import SectionFooter from "~/components/sections/SectionFooter.vue";
 import SectionTimer from "~/components/sections/SectionTimer.vue";
+import eventConfig from "#shared/utils/eventConfig";
 
 definePageMeta({
   name: 'Home',
@@ -13,9 +14,9 @@ useHead({
   title: 'Wedding Invitation',
 })
 useSeoMeta({
-  title: `Пришлашение на свадьбу`,
+  title: `Запрошення на весілля`,
   author: 'Nick Tristen, Никита Тристень',
-  description: 'Электронное приглашение на свадьбу Андрея и Алины',
+  description: 'Електронне запрошення на весілля Андрія та Аліни',
   mobileWebAppCapable: 'yes',
   charset: 'utf-8',
   appleMobileWebAppStatusBarStyle: 'black',
@@ -29,7 +30,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Html lang="ru">
+  <Html :lang="eventConfig.LOCALE">
   <div class="main">
     <SectionHeader/>
     <SectionTimer/>

@@ -2,9 +2,14 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
     devtools: {enabled: true},
-    modules: ['nuxt-mongoose', 'nuxt-mail', 'nuxt-countdown'],
+    modules: [
+        'nuxt-mongoose',
+        'nuxt-mail',
+        'nuxt-countdown'
+    ],
     mongoose: {
-        uri: process.env.MONGO_DB_URL
+        uri: process.env.MONGO_DB_URL,
+        modelsDir: 'server/models',
     },
     //@ts-ignore
     mail: {

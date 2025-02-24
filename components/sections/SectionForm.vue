@@ -1,10 +1,11 @@
 <script setup lang="ts">
 
-import ru from "~/locales/ru";
 import AppTitle from "~/components/UI/AppTitle.vue";
 import AppDescription from "~/components/UI/AppDescription.vue";
 import FeedBackForm from "~/components/form/FeedBackForm.vue";
 import Observed from "~/layouts/observed.vue";
+
+const {locale} = useLocale()
 
 </script>
 
@@ -15,7 +16,7 @@ import Observed from "~/layouts/observed.vue";
         <div class="col">
           <observed :step="1">
             <AppTitle
-                :value="ru.presence.title"
+                :value="locale.presence.title"
             />
           </observed>
         </div>
@@ -24,7 +25,7 @@ import Observed from "~/layouts/observed.vue";
         <div class="col description-col">
           <observed :step="2">
             <AppDescription
-                :value="ru.presence.description"
+                :value="locale.presence.description"
             />
           </observed>
         </div>

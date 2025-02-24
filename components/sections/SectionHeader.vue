@@ -21,7 +21,7 @@ const {locale} = useLocale()
         <div class="names">
           <Observed transition-name="slide-left">
             <div class="name">
-              {{ locale.newlyweds.husband.name }}
+              {{ locale.newlyweds.husband }}
             </div>
           </Observed>
           <Observed transition-name="fade" :step="2">
@@ -29,7 +29,7 @@ const {locale} = useLocale()
           </Observed>
           <Observed transition-name="slide-right" :step="3">
             <div class="name">
-              {{ locale.newlyweds.wife.name }}
+              {{ locale.newlyweds.wife }}
             </div>
           </Observed>
         </div>
