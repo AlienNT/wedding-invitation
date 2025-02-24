@@ -1,13 +1,14 @@
 <script setup lang="ts">
 
-import ru from "~/locales/ru";
 import AppTitle from "~/components/UI/AppTitle.vue";
 import SectionBanner from "~/components/UI/SectionBanner.vue";
 import BannerImage from 'assets/images/location.webp'
 import Observed from "~/layouts/observed.vue";
 import {useLocation} from "~/store/location";
+import {useLocale} from "~/composables/useLocale";
 
 const {name, address, link} = useLocation()
+const {locale} = useLocale()
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const {name, address, link} = useLocation()
         <div class="col">
          <observed :delay="500">
            <AppTitle
-               :value="ru.location.title"
+               :value="locale.location.title"
            />
          </observed>
         </div>

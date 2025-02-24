@@ -1,19 +1,12 @@
 <script setup lang="ts">
 
-import ru from "~/locales/ru";
 import SectionBanner from "~/components/UI/SectionBanner.vue";
 import BannerImage from 'assets/images/header_bg.webp'
 import Observed from "~/layouts/observed.vue";
+import eventConfig from "#shared/utils/eventConfig";
+import {displayedDate} from "#shared/utils";
 
-function displayedDate(date: string) {
-  const toDate = new Date(date);
-
-  return toDate.toLocaleDateString("ru-RU", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })
-}
+const {locale} = useLocale()
 
 </script>
 
@@ -28,15 +21,15 @@ function displayedDate(date: string) {
         <div class="names">
           <Observed transition-name="slide-left">
             <div class="name">
-              {{ ru.newlyweds.husband.name }}
+              {{ locale.newlyweds.husband.name }}
             </div>
           </Observed>
           <Observed transition-name="fade" :step="2">
-            <div>и</div>
+            <div>{{locale.newlyweds.and}}</div>
           </Observed>
           <Observed transition-name="slide-right" :step="3">
             <div class="name">
-              {{ ru.newlyweds.wife.name }}
+              {{ locale.newlyweds.wife.name }}
             </div>
           </Observed>
         </div>
@@ -45,17 +38,17 @@ function displayedDate(date: string) {
         <div class="wedding-invite-description">
           <Observed :step="4">
             <div class="invite-text">
-              {{ ru.invite.title }}
+              {{ locale.invite.title }}
             </div>
           </Observed>
           <Observed :step="5">
             <div class="invite-date">
-              {{ displayedDate(ru.invite.date) }}
+              {{ displayedDate(eventConfig.DATE) }}
             </div>
           </Observed>
           <Observed :step="6">
             <div class="invite-time">
-              {{ ru.invite.time }}
+              {{ eventConfig.TIME }}
             </div>
           </Observed>
         </div>

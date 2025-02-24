@@ -1,9 +1,12 @@
 <script setup lang="ts">
 
-import ru from "~/locales/ru";
+import {getDate} from "#shared/utils";
 import Timer from "~/components/UI/Timer.vue";
 import AppTitle from "~/components/UI/AppTitle.vue";
 import Observed from "~/layouts/observed.vue";
+import eventConfig from "#shared/utils/eventConfig";
+
+const {locale} = useLocale()
 
 </script>
 
@@ -18,7 +21,7 @@ import Observed from "~/layouts/observed.vue";
                 :step="2"
             >
               <AppTitle
-                  value="До свадьбы осталось"
+                  :value="locale.countdown.title"
               />
             </Observed>
           </div>
@@ -30,7 +33,7 @@ import Observed from "~/layouts/observed.vue";
                 :step="3"
             >
               <Timer
-                  :date="ru.countdown.date(ru.invite.date, ru.invite.time)"
+                  :date="getDate(eventConfig.DATE, eventConfig.TIME)"
               />
             </Observed>
           </div>

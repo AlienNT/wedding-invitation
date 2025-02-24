@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
-import ru from "~/locales/ru";
 import AppTitle from "~/components/UI/AppTitle.vue";
 import DayProgram from "~/components/program/DayProgram.vue";
 import Observed from "~/layouts/observed.vue";
 import {useDayProgram} from "~/store/dayProgram";
 
 const {programList} = useDayProgram()
+const {locale} = useLocale()
 
 </script>
 
@@ -17,7 +17,7 @@ const {programList} = useDayProgram()
         <Observed :step="1" transition-name="slide-right">
           <AppTitle
               class="col"
-              :value="ru.dayProgram.title"
+              :value="locale.dayProgram.title"
           />
         </Observed>
       </div>
