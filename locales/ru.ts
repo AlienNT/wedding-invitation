@@ -1,60 +1,20 @@
-import type {LocationInterface} from "~/store/location";
-
-export interface ScreenInterface {
-    title: string,
-}
-
-export interface ContactInterface {
-    value: string,
-    title: string,
-}
-
-export interface LocaleInterface {
-    newlyweds: {
-        husband: {
-            name: string
-        },
-        wife: {
-            name: string
-        }
-    },
-    invite: ScreenInterface & {
-        date: string,
-        time: string
-    },
-    countdown: ScreenInterface & {
-        date: (date: string, time: string) => Date,
-    },
-    dayProgram: ScreenInterface,
-    location: LocationInterface & ScreenInterface & {
-        buttonTitle: string
-    },
-    presence: ScreenInterface & {
-        description: string
-    },
-    footer: ScreenInterface & {
-        description: string,
-        contacts: ContactInterface[]
-    }
-}
+import type {LocaleInterface} from "#shared/types/locale";
 
 export const locale: LocaleInterface = {
     newlyweds: {
         husband: {
             name: 'Андрей'
         },
+        and: 'и',
         wife: {
             name: 'Алина'
         }
     },
     invite: {
         title: 'приглашаем на нашу свадьбу!',
-        date: '2025-05-04',
-        time: '15:30',
     },
     countdown: {
         title: 'До свадьбы осталось',
-        date: (date, time) => new Date(date + ' ' + time),
     },
     dayProgram: {
         title: 'Программа дня'
@@ -72,13 +32,7 @@ export const locale: LocaleInterface = {
     },
     footer: {
         title: 'Будем вас ждать!',
-        contacts: [
-            {
-                value: 'tel:+380950000000',
-                title: '+380950000000'
-            }
-        ],
-        description: 'По всем интересующим вас вопросам вы можете связаться с нашим свадебным организатором, Елена:\n'
+        description: 'По всем интересующим вас вопросам вы можете связаться с нашим свадебным организатором'
     }
 }
 
