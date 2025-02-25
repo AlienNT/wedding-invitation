@@ -6,13 +6,9 @@ interface ScreenInterface {
 
 interface LocaleInterface {
     newlyweds: {
-        husband: {
-            name: string
-        },
+        husband: string,
         and: string
-        wife: {
-            name: string
-        }
+        wife: string
     },
     invite: ScreenInterface,
     countdown: ScreenInterface,
@@ -21,7 +17,8 @@ interface LocaleInterface {
         buttonTitle: string
     },
     presence: ScreenInterface & {
-        description: string
+        description: string,
+        buttonTitle: string
     },
     footer: ScreenInterface & {
         description: string,
