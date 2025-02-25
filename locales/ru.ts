@@ -2,13 +2,9 @@ import type {LocaleInterface} from "#shared/types/locale";
 
 export const locale: LocaleInterface = {
     newlyweds: {
-        husband: {
-            name: 'Андрей'
-        },
+        husband: 'Андрей',
         and: 'и',
-        wife: {
-            name: 'Алина'
-        }
+        wife: 'Алина'
     },
     invite: {
         title: 'приглашаем на нашу свадьбу!',
@@ -28,7 +24,8 @@ export const locale: LocaleInterface = {
     },
     presence: {
         title: 'Ваше присутствие',
-        description: 'Подтвердите свое присутствие и ответьте на несколько вопросов. Это поможет в организации торжества! Будем ждать ваш ответ до 01.09.2024'
+        description: 'Подтвердите свое присутствие и ответьте на несколько вопросов. Это поможет в организации торжества! Будем ждать ваш ответ до 01.09.2024',
+        buttonTitle: 'Отправить'
     },
     footer: {
         title: 'Будем вас ждать!',
