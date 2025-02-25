@@ -27,17 +27,17 @@ const state = reactive({
             {
                 _id: '1',
                 value: 'yes',
-                title: 'Смогу / сможем присутствовать'
+                title: 'Зможу / зможемо бути присутнім'
             },
             {
                 _id: '2',
                 value: 'unknown',
-                title: 'Затрудняюсь ответить, сообщу позже'
+                title: 'Важко відповісти, повідомлю пізніше'
             },
             {
                 _id: '3',
                 value: 'no',
-                title: 'Не смогу прийти'
+                title: 'Не зможу прийти'
             },
         ],
     } as RadioSelectorInterface,
