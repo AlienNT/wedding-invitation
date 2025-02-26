@@ -1,6 +1,7 @@
 @use 'normalize';
 @use 'fonts';
 @use 'variables';
+@use 'sass:color';
 
 $horizontalSpace: 30px;
 $sectionVerticalPadding: 100px;
@@ -46,17 +47,21 @@ body,
   height: 100%;
   width: 100%;
 }
+
 .main {
   overflow-x: hidden;
 }
 
+
+$sectionBGColor: #ffffff;
+
 .section {
-  background: #ffffff;
+  background: $sectionBGColor;
   padding-top: $sectionVerticalPadding;
   padding-bottom: $sectionVerticalPadding;
   transition: height .2s ease;
 
   &:nth-of-type(even) {
-    background: #f4f4f4;
+    background: color.scale($sectionBGColor, $lightness: -2%);
   }
 }
