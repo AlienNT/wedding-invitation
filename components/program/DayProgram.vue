@@ -21,7 +21,7 @@ withDefaults(defineProps<{
       >
         <observed
             tag-name="li"
-            transition-name="fade"
+            transition-name="slide-right"
             :step="index + step"
         >
           <DayProgramItem
@@ -45,18 +45,22 @@ withDefaults(defineProps<{
 
 $listPadding: 30px;
 .program {
-  padding-left: calc($listPadding / 2);
   margin: 0 auto;
   max-width: 600px;
 }
 
 .program-list {
-  border-left: 1px solid variables.$designElementColor;
   padding-left: $listPadding;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+
+  > * {
+    &:not(:last-child) {
+      border-left: 2px solid variables.$designElementColor;
+      padding-bottom: 60px;
+    }
+  }
 }
 
 </style>

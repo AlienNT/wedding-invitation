@@ -40,17 +40,17 @@ const iconStyle = computed(() => {
       />
     </div>
     <div class="item-field item-field--time">
-      <Observed transition-name="slide-right" :step="step + 1">
+      <Observed transition-name="slide-bottom" :step="step + 0.5">
         {{ time }}
       </Observed>
     </div>
     <div class="item-field item-field--title">
-      <Observed transition-name="slide-right" :step="step + 2">
+      <Observed transition-name="slide-bottom" :step="step + 1">
         {{ title }}
       </Observed>
     </div>
     <div class="item-field item-field--description">
-      <Observed transition-name="slide-right" :step="step + 3">
+      <Observed transition-name="slide-bottom" :step="step + 1.5">
         {{ description }}
       </Observed>
     </div>
@@ -68,6 +68,8 @@ $verticalPadding: calc($listPadding / 2);
   flex-direction: column;
   gap: 5px;
   padding-top: $verticalPadding;
+  position: relative;
+  padding-left: $listPadding;
 }
 
 .item-field--icon {
