@@ -4,11 +4,15 @@ import FormRadioSelector from "~/components/form/FormRadioSelector.vue";
 import AppButton from "~/components/UI/AppButton.vue";
 import {useFeedback} from "~/store/feedback";
 import {getKeys, isNotEmpty} from "#shared/utils";
+import AppLoader from "~/components/UI/AppLoader.vue";
 
 const {feedbackFormData, sendFeedback, setSelectedOption, selectedOptionId, options} = useFeedback()
 const {locale} = useLocale()
 
 const isLoading = ref(false);
+const isEdited = ref(false);
+const isSend = ref(false);
+const isError = ref(false);
 
 const fieldTitles = {
   names: 'Прізвище та Ім\'я (перерахуйте всіх)',
@@ -21,24 +25,54 @@ const isValid = computed(() => {
 })
 
 const isDisabled = computed(() => {
-  return !isValid.value || isLoading.value;
+  return (!isValid.value || (!isEdited.value && isSend.value)) || isLoading.value;
+})
+
+const buttonTitle = computed(() => {
+  if (isSend.value) {
+    return 'Відправлено'
+  }
+  if (isError.value) {
+    return 'Помилка'
+  }
+  return locale.value.presence.buttonTitle
+})
+
+const buttonClass = computed(() => {
+  if (isSend.value) {
+    return 'success'
+  }
+  if (isError.value) {
+    return 'error'
+  }
 })
 
 async function onSubmit() {
   if (!isValid.value) return;
 
+  isEdited.value = false;
   isLoading.value = true;
 
   await sendFeedback({})
       .then(res => {
         console.log({res})
+        isSend.value = true
+        isError.value = false
       })
       .catch(error => {
         console.log({error})
+        isError.value = true
       })
       .finally(() => {
         isLoading.value = false;
       })
+}
+
+function onInput(func: () => any) {
+  isEdited.value = true
+  isSend.value = false
+  isError.value = false
+  func()
 }
 
 </script>
@@ -48,28 +82,39 @@ async function onSubmit() {
     <FormTextField
         :title="fieldTitles.names"
         :value="feedbackFormData.names"
-        @on-input="e => feedbackFormData.names = e"
+        @on-input="e => onInput(() => feedbackFormData.names = e)"
     />
     <FormRadioSelector
         :options="options"
         :selected-option="selectedOptionId"
         :field-title="fieldTitles.options"
-        @on-input="setSelectedOption"
+        @on-input="e => onInput(() => setSelectedOption(e))"
     />
     <FormTextField
         :title="fieldTitles.isNeedHotel"
         :value="feedbackFormData.isNeedHotel"
-        @on-input="e => feedbackFormData.isNeedHotel = e"
+        @on-input="e => onInput(() => feedbackFormData.isNeedHotel = e)"
     />
     <AppButton
-        :title="locale.presence.buttonTitle"
+        :class="buttonClass"
+        :title="buttonTitle"
         :disabled="isDisabled"
     />
+  <transition
+      appear
+      name="fade"
+  >
+    <AppLoader
+        v-if="isLoading"
+        class="form-loader"
+    />
+  </transition>
   </form>
 </template>
 
 <style scoped lang="scss">
 @use 'assets/styles/media';
+@use 'assets/styles/transitions';
 
 .form {
   display: flex;
@@ -80,10 +125,28 @@ async function onSubmit() {
   margin: 0 auto;
   padding: 15px;
   border-radius: 15px;
+  position: relative;
 
   @media #{media.$mediaScreenMedium} {
     gap: 15px;
   }
+}
+
+.success {
+  background: green;
+}
+
+.error {
+  background: red;
+}
+
+.form-loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  top: 0;
+  left: 0;
 }
 
 </style>
