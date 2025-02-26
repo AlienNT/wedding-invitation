@@ -27,7 +27,7 @@ const isIntersecting = computed(() => {
 
 onMounted(() => {
   createObserver({
-    rootMargin: '150px'
+    rootMargin: '0px'
   })
   observeTarget(observed.value)
 })
