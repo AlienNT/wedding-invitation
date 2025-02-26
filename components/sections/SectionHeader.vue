@@ -25,7 +25,7 @@ const {locale} = useLocale()
             </div>
           </Observed>
           <Observed transition-name="fade" :step="2">
-            <div>{{locale.newlyweds.and}}</div>
+            <div>{{ locale.newlyweds.and }}</div>
           </Observed>
           <Observed transition-name="slide-right" :step="3">
             <div class="name">
@@ -36,17 +36,17 @@ const {locale} = useLocale()
       </template>
       <template #description>
         <div class="wedding-invite-description">
-          <Observed :step="4">
+          <Observed :step="4" transition-name="slide-bottom">
             <div class="invite-text">
               {{ locale.invite.title }}
             </div>
           </Observed>
-          <Observed :step="5">
+          <Observed :step="5" transition-name="slide-bottom">
             <div class="invite-date">
               {{ displayedDate(eventConfig.DATE) }}
             </div>
           </Observed>
-          <Observed :step="6">
+          <Observed :step="6" transition-name="slide-bottom">
             <div class="invite-time">
               {{ eventConfig.TIME }}
             </div>
@@ -60,6 +60,7 @@ const {locale} = useLocale()
 <style scoped lang="scss">
 @use 'assets/styles/variables';
 @use 'assets/styles/fonts';
+@use 'assets/styles/media';
 
 .section-header {
   flex: 1;
@@ -72,11 +73,15 @@ const {locale} = useLocale()
   margin-top: auto;
 
   * {
-    font-size: 72px;
+    font-size: 86px;
     text-align: center;
     color: white;
     font-weight: 300;
     font-family: fonts.$fontMain;
+
+    @media #{media.$mediaScreenMedium} {
+      font-size: 72px;
+    }
   }
 }
 
@@ -86,15 +91,20 @@ const {locale} = useLocale()
   gap: 15px;
   text-transform: uppercase;
   align-items: unset;
-  font-size: 18px;
-  font-weight: 600;
+  margin-top: auto;
 }
 
 .invite-date,
 .invite-time,
 .invite-text {
   text-align: center;
+  font-size: 20px;
+  font-weight: 500;
   flex: 0 0 calc(100% / 3);
+
+  @media #{media.$mediaScreenMedium} {
+    font-size: 16px;
+  }
 }
 
 .invite-text {
