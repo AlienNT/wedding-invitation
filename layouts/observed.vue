@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  transitionName?: 'fade' | 'slide-left' | 'slide-right'
+  transitionName?: 'fade' | 'slide-left' | 'slide-right' | 'slide-bottom'
   delay?: number;
   step?: number;
   tagName?: string;
@@ -90,5 +90,14 @@ function getClassName(name: string) {
 .slide-right-after {
   opacity: 1;
   transform: translateX(0);
+}
+
+.slide-bottom-before {
+  opacity: 0;
+  transform: translateY(50%);
+}
+.slide-bottom-after {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
