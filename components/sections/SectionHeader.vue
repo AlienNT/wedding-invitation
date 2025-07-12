@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import SectionBanner from "~/components/UI/SectionBanner.vue";
-import BannerImage from 'assets/images/header_bg.webp'
+import BannerImage from 'assets/images/wedding-bg.jpg'
 import Observed from "~/layouts/observed.vue";
 import eventConfig from "#shared/utils/eventConfig";
 import {displayedDate} from "#shared/utils";

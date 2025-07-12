@@ -20,5 +20,5 @@ export default defineNuxtConfig({
                 pass: process.env.MAIL_PASSWORD
             }
         }
-    }
+    },
 })

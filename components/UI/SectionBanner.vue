@@ -38,7 +38,7 @@ const slots = useSlots()
 
 .banner {
   position: relative;
-  background-position: center center;
+  background-position: center 30%;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;

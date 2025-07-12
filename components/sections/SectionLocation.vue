@@ -2,12 +2,11 @@
 
 import AppTitle from "~/components/UI/AppTitle.vue";
 import SectionBanner from "~/components/UI/SectionBanner.vue";
-import BannerImage from 'assets/images/location.webp'
+import BannerImage from 'assets/images/location-bg.jpg'
 import Observed from "~/layouts/observed.vue";
 import {useLocation} from "~/store/location";
 import {useLocale} from "~/composables/useLocale";
 
-const {name, address, link} = useLocation()
 const {locale} = useLocale()
 </script>
 
@@ -36,9 +35,10 @@ const {locale} = useLocale()
       <div class="row">
         <div class="col">
           <Location
-              :name="name"
-              :address="address"
-              :link="link"
+              :name="locale.location.name"
+              :address="locale.location.address"
+              :link="locale.location.link"
+              :button-title="locale.location.buttonTitle"
           />
         </div>
       </div>

@@ -2,7 +2,10 @@
 import type {LocationInterface} from "~/store/location";
 import Observed from "~/layouts/observed.vue";
 
-defineProps<LocationInterface>()
+defineProps<LocationInterface & {
+  buttonTitle?: string
+}>()
+
 </script>
 
 <template>
@@ -19,7 +22,13 @@ defineProps<LocationInterface>()
     </div>
     <div class="location-map-link">
       <observed :step="3">
-        <a :href="link">Перейти на карту</a>
+        <a
+            :href="link"
+            class="location-link"
+            target="_blank"
+        >
+          {{ buttonTitle || 'Перейти' }}
+        </a>
       </observed>
     </div>
   </div>
@@ -38,6 +47,16 @@ defineProps<LocationInterface>()
 .location-map-link {
   padding-top: 15px;
   width: fit-content;
+
+  @media (pointer: fine) {
+    a {
+      transition: .2s ease;
+
+      &:hover {
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
 
   a {
     display: flex;
