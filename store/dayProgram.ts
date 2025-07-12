@@ -4,7 +4,7 @@ const state = reactive({
     programList: [
         {
             _id: '1',
-            time: '15:30',
+            time: '11:00',
             title: 'Збір гостей',
             description: 'Подаруйте на свою посмішку та візьміть із собою гарний настрій',
             icon: 'assets/icons/pointer.svg',
@@ -12,22 +12,30 @@ const state = reactive({
         },
         {
             _id: '2',
-            time: '16:00',
-            title: 'Церемонія',
+            time: '12:00',
+            title: 'Таїнство вінчання у Петропавлівській церкві у Світязі',
             description: 'Може бути зворушливо, дозволяється сплакати',
             icon: 'public/icons/wedding.svg',
-            className: 'ceremony'
+            className: 'wedding'
         },
         {
             _id: '3',
-            time: '17:00',
+            time: '14:00',
+            title: 'Церемонія',
+            description: 'Святкування в затишній атмосфері ресторану',
+            icon: 'public/icons/eternity.svg',
+            className: 'ceremony'
+        },
+        {
+            _id: '4',
+            time: '15:00',
             title: 'Банкет',
             description: 'Саме час для смачної їжі, танців та розваг',
             icon: 'public/icons/wine.svg',
             className: 'banquet'
         },
         {
-            _id: '4',
+            _id: '5',
             time: '23:00',
             title: 'Завершення урочистостей',
             description: 'Сподіваємось, цей вечір вам сподобається',

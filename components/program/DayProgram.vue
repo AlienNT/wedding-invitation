@@ -22,7 +22,7 @@ withDefaults(defineProps<{
         <observed
             tag-name="li"
             transition-name="slide-right"
-            :step="index + step"
+            :step="step + index"
         >
           <DayProgramItem
               tag-name="div"
@@ -32,7 +32,7 @@ withDefaults(defineProps<{
               :description="description"
               :icon="icon"
               :class-name="className"
-              :step="index + 1 + step"
+              :step="index + step"
           />
         </observed>
       </template>
@@ -58,7 +58,7 @@ $listPadding: 30px;
   > * {
     &:not(:last-child) {
       border-left: 2px solid variables.$designElementColor;
-      padding-bottom: 60px;
+      padding-bottom: 40px;
     }
   }
 }

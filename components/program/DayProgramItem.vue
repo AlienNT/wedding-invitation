@@ -98,6 +98,10 @@ $verticalPadding: calc($listPadding / 2);
     mask-image: url('assets/icons/pointer.svg');
   }
 
+  .wedding & {
+    mask-image: url('assets/icons/eternity.svg');
+  }
+
   .ceremony & {
     mask-image: url('assets/icons/wedding.svg');
   }
@@ -113,7 +117,9 @@ $verticalPadding: calc($listPadding / 2);
 
 .item-field--time,
 .item-field--title {
-  color: #686868;
+  * {
+    color: #686868;
+  }
 }
 
 .item-field--time {
@@ -121,7 +127,11 @@ $verticalPadding: calc($listPadding / 2);
 }
 
 .item-field--title {
-  font-size: 18px;
+  * {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  padding-bottom: 5px;
 }
 
 .item-field--description {
