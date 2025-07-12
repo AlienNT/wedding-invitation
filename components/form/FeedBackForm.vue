@@ -23,7 +23,14 @@ const fieldTitles = {
 }
 
 const isValid = computed(() => {
-  return getKeys(feedbackFormData.value).every(key => isNotEmpty(feedbackFormData.value[key]))
+  return getKeys(feedbackFormData.value).every(key => {
+    if (key === 'isNeedHotel') {
+      if (feedbackFormData.value.isCanBePresent.value === 'no' || feedbackFormData.value.isCanBePresent.value === 'unknown') {
+        return true
+      }
+    }
+    return isNotEmpty(feedbackFormData.value[key])
+  })
 })
 
 const isDisabled = computed(() => {
@@ -90,6 +97,7 @@ function onInput(func: () => any) {
     <FormTextField
         :title="fieldTitles.names"
         :value="feedbackFormData.names"
+        placeholder="Прізвище Ім'я, Прізвище..."
         @on-input="e => onInput(() => feedbackFormData.names = e)"
     />
     <FormRadioSelector
@@ -102,6 +110,7 @@ function onInput(func: () => any) {
         v-if="feedbackFormData.isCanBePresent?.value !== 'no' && feedbackFormData.isCanBePresent?.value !== 'unknown'"
         :title="fieldTitles.isNeedHotel"
         :value="feedbackFormData.isNeedHotel"
+        placeholder="Вкажіть вимоги та побажання"
         @on-input="e => onInput(() => feedbackFormData.isNeedHotel = e)"
     />
     <AppButton

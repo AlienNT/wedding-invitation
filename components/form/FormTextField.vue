@@ -70,6 +70,16 @@ input {
   transition: .2s ease;
   position: relative;
 
+  &::placeholder {
+    transition: .2s ease;
+  }
+
+  &:focus {
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
   @media #{media.$mediaScreenMedium} {
     padding: 10px 0;
   }
