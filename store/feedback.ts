@@ -16,7 +16,7 @@ export interface RadioSelectorInterface {
 
 export interface FeedbackMessageInterface {
     names: string,
-    isCanBePresent: CanBePresent,
+    isCanBePresent: RadioSelectorOptionInterface,
     isNeedHotel: string,
 }
 
@@ -43,7 +43,7 @@ const state = reactive({
     } as RadioSelectorInterface,
     feedbackFormData: {
         names: undefined as unknown as string,
-        isCanBePresent: undefined as unknown as CanBePresent,
+        isCanBePresent: undefined as unknown as RadioSelectorOptionInterface,
         isNeedHotel: undefined as unknown as string
     } as FeedbackMessageInterface
 })
@@ -64,11 +64,11 @@ export function useFeedback() {
 
     async function sendFeedback(
         {
-            title = 'Ответ на приглашение',
+            title = 'Відповідь на повідомлення',
             message
         }: {
             title?: string,
-            message?: HTMLElement
+            message?: HTMLElement | string
         }) {
 
         return new Promise(async (resolve, reject) => {
@@ -80,6 +80,9 @@ export function useFeedback() {
                         ...feedbackFormData.value,
                         option: option.value
                     }),
+                    headers: {
+                        'Reply-To': 'noreply@yourdomain.com'
+                    }
                 })
                 resolve(true)
 
@@ -99,7 +102,7 @@ export function useFeedback() {
         if (!selectedOption) return
 
         state.radio.selectedOption = selectedOptionId
-        state.feedbackFormData.isCanBePresent = selectedOption.value
+        state.feedbackFormData.isCanBePresent = selectedOption
     }
 
     return {

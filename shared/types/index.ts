@@ -1,6 +1,8 @@
+import type {RadioSelectorOptionInterface} from "~/store/feedback";
+
 export interface MailMessageInterface {
     names: string,
-    isCanBePresent: boolean,
+    isCanBePresent: RadioSelectorOptionInterface,
     isNeedHotel: string,
 }
 

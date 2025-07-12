@@ -5,6 +5,8 @@ import AppButton from "~/components/UI/AppButton.vue";
 import {useFeedback} from "~/store/feedback";
 import {getKeys, isNotEmpty} from "#shared/utils";
 import AppLoader from "~/components/UI/AppLoader.vue";
+import {render} from "@vue-email/render";
+import {FeedBackMail} from "#components";
 
 const {feedbackFormData, sendFeedback, setSelectedOption, selectedOptionId, options} = useFeedback()
 const {locale} = useLocale()
@@ -53,7 +55,13 @@ async function onSubmit() {
   isEdited.value = false;
   isLoading.value = true;
 
-  await sendFeedback({})
+  await sendFeedback({
+    message: await render(FeedBackMail, {
+      names: feedbackFormData.value.names,
+      isCanBePresent: feedbackFormData.value.isCanBePresent,
+      isNeedHotel: feedbackFormData.value.isNeedHotel,
+    })
+  })
       .then(res => {
         console.log({res})
         isSend.value = true
@@ -91,6 +99,7 @@ function onInput(func: () => any) {
         @on-input="e => onInput(() => setSelectedOption(e))"
     />
     <FormTextField
+        v-if="feedbackFormData.isCanBePresent?.value !== 'no' && feedbackFormData.isCanBePresent?.value !== 'unknown'"
         :title="fieldTitles.isNeedHotel"
         :value="feedbackFormData.isNeedHotel"
         @on-input="e => onInput(() => feedbackFormData.isNeedHotel = e)"
@@ -100,15 +109,15 @@ function onInput(func: () => any) {
         :title="buttonTitle"
         :disabled="isDisabled"
     />
-  <transition
-      appear
-      name="fade"
-  >
-    <AppLoader
-        v-if="isLoading"
-        class="form-loader"
-    />
-  </transition>
+    <transition
+        appear
+        name="fade"
+    >
+      <AppLoader
+          v-if="isLoading"
+          class="form-loader"
+      />
+    </transition>
   </form>
 </template>
 
