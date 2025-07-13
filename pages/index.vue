@@ -6,6 +6,7 @@ import SectionForm from "~/components/sections/SectionForm.vue";
 import SectionFooter from "~/components/sections/SectionFooter.vue";
 import SectionTimer from "~/components/sections/SectionTimer.vue";
 import eventConfig from "#shared/utils/eventConfig";
+import SectionDresscode from "~/components/sections/SectionDresscode.vue";
 
 definePageMeta({
   name: 'Home',
@@ -38,6 +39,7 @@ useSeoMeta({
     <SectionProgram/>
     <SectionLocation/>
     <SectionForm/>
+    <SectionDresscode/>
     <SectionFooter/>
   </div>
   </Html>

@@ -20,7 +20,7 @@ defineProps<{
   width: 100%;
   font-family: fonts.$fontMain;
   color: variables.$colorFontPrimary;
-  font-size: 36px;
+  font-size: 42px;
   font-weight: 500;
 }
 </style>

@@ -1,8 +1,11 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   backgroundImage?: string,
   backgroundAttachment?: 'fixed' | 'scroll' | 'unset',
-}>()
+  backgroundColorScheme?: 'light' | 'dark',
+}>(), {
+  backgroundColorScheme: 'dark',
+})
 
 const style = computed(() => [
   props.backgroundImage ? `background-image: url(${props.backgroundImage})` : '',
@@ -13,7 +16,11 @@ const slots = useSlots()
 </script>
 
 <template>
-  <div class="banner" :style="style">
+  <div
+      class="banner"
+      :style="style"
+      :class="backgroundColorScheme"
+  >
     <div
         v-if="slots.description || slots.title"
         class="banner-content"
@@ -52,7 +59,19 @@ const slots = useSlots()
     width: 100%;
     height: 100%;
     content: "";
-    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &.light {
+    &:before {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+    }
+  }
+
+  &.dark {
+    &:before {
+      background: rgba(0, 0, 0, 0.6);
+    }
   }
 }
 
