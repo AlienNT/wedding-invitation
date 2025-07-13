@@ -4,7 +4,7 @@ import AppTitle from "~/components/UI/AppTitle.vue";
 import SectionBanner from "~/components/UI/SectionBanner.vue";
 import BannerImage from 'assets/images/location-bg.jpg'
 import Observed from "~/layouts/observed.vue";
-import {useLocation} from "~/store/location";
+
 import {useLocale} from "~/composables/useLocale";
 
 const {locale} = useLocale()

@@ -42,6 +42,7 @@ defineProps<LocationInterface & {
   flex-direction: column;
   gap: 15px;
   align-items: center;
+  text-align: center;
 }
 
 .location-map-link {

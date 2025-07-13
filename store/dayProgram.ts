@@ -14,7 +14,7 @@ const state = reactive({
             _id: '2',
             time: '12:00',
             title: 'Таїнство вінчання у Петропавлівській церкві у Світязі',
-            description: 'Може бути зворушливо, дозволяється сплакати',
+            description: 'Може бути зворушливо, дозволяється плакати',
             icon: 'public/icons/wedding.svg',
             className: 'wedding'
         },
@@ -36,7 +36,7 @@ const state = reactive({
         },
         {
             _id: '5',
-            time: '23:00',
+            time: '22:00',
             title: 'Завершення урочистостей',
             description: 'Сподіваємось, цей вечір вам сподобається',
             icon: 'public/icons/fireworks.svg',
